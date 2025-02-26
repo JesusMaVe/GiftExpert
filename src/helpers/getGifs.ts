@@ -10,7 +10,8 @@ type GifData = {
 };
 
 export const getGifs = async (categoryName: string): Promise<GifData[]> => {
-  const url = `https://api.giphy.com/v1/gifs/search?api_key=MTv2RTfwUo2B0kZkPh6H2Y8u27tPvxYA&q=${categoryName}&limit=10`;
+  const VITE_GIPHY_API_KEY = import.meta.env.VITE_GIPHY_API_KEY;
+  const url = `https://api.giphy.com/v1/gifs/search?api_key=${VITE_GIPHY_API_KEY}&q=${categoryName}&limit=10`;
   try {
     const resp = await fetch(url);
     if (!resp.ok) {
